@@ -1,0 +1,145 @@
+// SCSS Variable
+$color--light-gray: #f2eeea;
+$color--gray-1: #e7e7e7;
+$color--gray-2: #ddd8d8;
+$color--white: #ffffff;
+$color--light-green: #c4f291;
+$color--green-1: #b7e782;
+
+// Reset CSS
+*{
+  margin: 0;
+  padding: 0;
+
+  &, &::before, &::after {
+    box-sizing: border-box;
+  }
+}
+ul, ol {
+  list-style: none;
+}
+body {
+  font-size: 100%;
+  line-height: 1.5;
+  background: $color--light-gray;
+  transition: background 250ms ease;
+}
+
+// App CSS Start
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.app {
+  padding: 15px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 16px 18px rgba(0,0,0,0.1);
+
+  &--title {
+    text-align: center;
+    margin: 0 0 15px;
+    font-size: 3em;
+  }
+  &-wrapper {
+    &--input {
+      width: 100%;
+      max-width: 100%;
+      padding: 15px;
+      border: 0;
+      background-color: $color--white;
+      min-height: 50px;
+      font-size: 3em;
+      text-align: right;
+
+      &:active, &:focus {
+        outline: 0;
+      }
+    }
+    &-input-action-btn {
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .calc-btn-list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      
+      li {
+        min-height: 100px; 
+        font-size: 3em;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        border: 1px solid rgba(53, 53, 53, 0.1);
+        border-top: 0;
+        transition: backgroundColor 250ms ease;
+      }
+      &:nth-child(1){
+        flex: 1 1 75%;
+        
+        li {
+          flex: 1 1 33%;
+          background-color: $color--gray-1;
+
+          &:hover {
+            background-color: $color--gray-2;
+          }
+        }
+      }
+      &:nth-child(2){
+        flex: 1 1 25%;
+
+        li {
+          flex: 1 1 100%;
+          background-color: $color--light-green;
+
+          &:hover {
+            background-color: $color--green-1;
+          }
+        }
+      }      
+    }
+  }
+}
+// App CSS End
+// Dark Mode CSS Start
+body.mode-dark {
+  background: #000;
+  .app {
+    box-shadow: 0 16px 18px rgba(255,255,255,0.1);
+    border: 1px solid $color--gray-1;
+
+    &--title {
+      color: $color--white;
+    }
+    &-wrapper {
+      &--input {
+        border-bottom: 1px solid rgba(53, 53, 53, 0.1);
+      }
+      .calc-btn-list {
+        li {
+          background-color: $color--white;
+        }
+      }
+    }
+  }
+}
+// Dark Mode CSS End
+@keyframes flipLeft{
+  0% {
+    transform: scaleX(-1);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
